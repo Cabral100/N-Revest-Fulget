@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N Reveste - Especialistas em Piso Fulget</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+    <style>
+        :root {
+            --verde-oliva: #8A9A5B;
+            --ocre: #D4A574;
+            --terracota: #A0522D;
+            --cinza-pedra: #B8B5A7;
+            --areia: #D4C5A9;
+            --camelo: #C8956D;
+            --azul-petroleo: #2F4F4F;
+            --musgo: #556B2F;
+            --bege-claro: #F5F1EB;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--musgo) 0%, var(--verde-oliva) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .loading-screen.fade-out {
+            opacity: 0;
+            transform: scale(1.1);
+            pointer-events: none;
+        }
+
+        .logo-container {
+            text-align: center;
+            animation: logoFloat 3s ease-in-out infinite;
+        }
+
+        .logo-nreveste {
+            width: clamp(150px, 40vw, 200px);
+            height: auto;
+            filter: brightness(0) invert(1) drop-shadow(0 8px 16px rgba(0,0,0,0.3));
+        }
+
+        @keyframes logoFloat {
+            0%, 100% {
+                transform: translateY(0px) scale(1);
+            }
+            50% {
+                transform: translateY(-10px) scale(1.05);
+            }
+        }
+
+        /* Hero Background */
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(44, 44, 44, 0.6), rgba(140, 154, 91, 0.3)), url('img/img.png') no-repeat center center/cover;
+            background-attachment: fixed;
+        }
+
+        /* Section Dividers */
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--verde-oliva), transparent);
+            margin: 0 auto;
+            width: 60%;
+        }
+
+        .wave-divider {
+            position: relative;
+            height: 60px;
+            overflow: hidden;
+        }
+
+        .wave-divider::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='%23ffffff'%3E%3C/path%3E%3C/svg%3E") no-repeat center/cover;
+        }
+
+        /* Animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Button Styles */
+        .btn-primary {
+            background: var(--ocre);
+            color: #1f2937;
+            font-weight: 600;
+            padding: 12px 32px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 165, 116, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--camelo);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(212, 165, 116, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--verde-oliva);
+            color: white;
+            font-weight: 600;
+            padding: 12px 32px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(138, 154, 91, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: var(--musgo);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(138, 154, 91, 0.4);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--verde-oliva);
+            color: var(--verde-oliva);
+            background: transparent;
+            font-weight: 600;
+            padding: 10px 30px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            background: var(--verde-oliva);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Card Hover Effects */
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Catalog Grid */
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .catalog-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .catalog-grid {
+                grid-template-columns: repeat(6, 1fr);
+            }
+        }
+
+        /* Floating Buttons */
+        .floating-buttons {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 1000;
+        }
+
+        .floating-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            text-decoration: none;
+            box-shadow: 0 8px 25px rgba(44, 44, 44, 0.3);
+        }
+
+        .back-to-top {
+            background: var(--verde-oliva);
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(0) rotate(-180deg);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1) rotate(0deg);
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            animation: whatsappPulse 3s infinite;
+        }
+
+        @keyframes whatsappPulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 8px 25px rgba(44, 44, 44, 0.3);
+            }
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4), 0 0 30px rgba(37, 211, 102, 0.3);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 8px 25px rgba(44, 44, 44, 0.3);
+            }
+        }
+
+        /* Header Logo Animation */
+        .header-logo {
+            transition: all 0.3s ease;
+        }
+
+        .header-logo:hover {
+            transform: scale(1.1) rotate(3deg);
+        }
+        /* Catalog Grid */
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .catalog-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .catalog-grid {
+                grid-template-columns: repeat(6, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .gallery-grid, .catalog-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+                gap: 1rem;
+            }
+
+            .gallery-item img {
+                height: auto;
+            }
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .floating-buttons {
+                bottom: 1rem;
+                right: 1rem;
+            }
+
+            .floating-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Loading Screen -->
+<div class="loading-screen" id="loadingScreen">
+    <div class="logo-container">
+        <img src="img/Logo%20N%20Reveste%20-%20Branco.png" alt="N Reveste Logo" class="logo-nreveste">
+    </div>
+</div>
+
+<!-- Header -->
+<header class="fixed top-0 w-full bg-white/95 backdrop-blur-xl z-50 transition-all duration-300 border-b border-verde-oliva/10" id="header">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center py-4">
+            <a href="#home" class="flex items-center space-x-3">
+                <img src="img/Logo%20N%20Reveste%20-%20preto.png" alt="N Reveste Logo" class="h-10 w-10  object-cover header-logo">
+            </a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="text-gray-900 hover:text-verde-oliva font-medium transition-colors duration-300">Início</a>
+                <a href="#about" class="text-gray-900 hover:text-verde-oliva font-medium transition-colors duration-300">Sobre</a>
+                <a href="#fulget" class="text-gray-900 hover:text-verde-oliva font-medium transition-colors duration-300">Piso Fulget</a>
+                <a href="#gallery" class="text-gray-900 hover:text-verde-oliva font-medium transition-colors duration-300">Galeria</a>
+                <a href="#catalog" class="text-gray-900 hover:text-verde-oliva font-medium transition-colors duration-300">Catálogo</a>
+                <a href="#contact" class="text-gray-900 hover:text-verde-oliva font-medium transition-colors duration-300">Contato</a>
+            </nav>
+            <button class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-300" id="mobileMenuBtn">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden py-4 border-t border-gray-100" id="mobileMenu">
+            <nav class="flex flex-col space-y-2">
+                <a href="#home" class="px-4 py-2 text-gray-900 hover:text-verde-oliva hover:bg-gray-50 rounded-lg transition-all duration-300">Início</a>
+                <a href="#about" class="px-4 py-2 text-gray-900 hover:text-verde-oliva hover:bg-gray-50 rounded-lg transition-all duration-300">Sobre</a>
+                <a href="#fulget" class="px-4 py-2 text-gray-900 hover:text-verde-oliva hover:bg-gray-50 rounded-lg transition-all duration-300">Piso Fulget</a>
+                <a href="#gallery" class="px-4 py-2 text-gray-900 hover:text-verde-oliva hover:bg-gray-50 rounded-lg transition-all duration-300">Galeria</a>
+                <a href="#catalog" class="px-4 py-2 text-gray-900 hover:text-verde-oliva hover:bg-gray-50 rounded-lg transition-all duration-300">Catálogo</a>
+                <a href="#contact" class="px-4 py-2 text-gray-900 hover:text-verde-oliva hover:bg-gray-50 rounded-lg transition-all duration-300">Contato</a>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<!-- Hero Section -->
+<section class="min-h-screen flex items-center justify-center hero-bg relative overflow-hidden" id="home">
+    <div class="absolute inset-0 bg-gradient-to-br from-black/50 via-transparent to-verde-oliva/30"></div>
+    <div class="relative z-10 text-center text-white max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 fade-in-up">
+        <h1 class="text-4xl md:text-6xl font-light mb-6 tracking-tight leading-tight">
+           N <span class="font-semibold" style="color: var(--ocre);">Revest </span>
+        </h1>
+        <p class="text-xl md:text-2xl mb-8 text-gray-200 max-w-2xl mx-auto">
+            Revestindo com pedras naturais desde 2020
+        </p>
+        <a href="#contact" class="inline-flex items-center btn-primary">
+            <span class="mr-2">Solicitar Orçamento</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+</section>
+
+<!-- Wave Divider -->
+<div class="wave-divider"></div>
+
+<!-- About Section -->
+<section class="py-24 relative" style="background: var(--bege-claro);" id="about">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 fade-in-up">
+            <h2 class="text-4xl font-bold text-gray-900 mb-4">
+                Nossa <span style="color: var(--verde-oliva);">História</span>
+            </h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Construindo espaços com excelência artesanal desde 2020
+            </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-16 items-center mb-16">
+            <div class="slide-in-left">
+                <img class="w-full h-96 rounded-3xl object-cover shadow-2xl"
+                     src="img/sobre.jfif"
+                     alt="N Reveste - Nossa História" />
+            </div>
+            <div class="slide-in-right">
+                <div class="space-y-8">
+                    <!-- Fundação -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg border-l-4" style="border-color: var(--verde-oliva);">
+                        <div class="flex items-center mb-4">
+
+                            <h3 class="text-2xl font-bold" style="color: var(--verde-oliva);">Fundação</h3>
+                        </div>
+                        <p class="text-gray-700 leading-relaxed">
+                            Fundada em <strong>2020</strong> pela arquiteta <strong style="color: var(--terracota);">Neia Lippi</strong>,
+                            a N Reveste nasceu da paixão por criar revestimentos únicos que harmonizam com a natureza,
+                            especializando-se em Piso Fulget para áreas externas.
+                        </p>
+                    </div>
+
+                    <!-- Missão -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg border-l-4" style="border-color: var(--ocre);">
+                        <div class="flex items-center mb-4">
+
+                            <h3 class="text-2xl font-bold" style="color: var(--ocre);">Missão</h3>
+                        </div>
+                        <p class="text-gray-700 leading-relaxed">
+                            Confeccionar o <strong>melhor revestimento artesanal</strong>, com excelência desde a escolha
+                            da matéria-prima até o acabamento final, garantindo um atendimento excepcional e suporte
+                            pós-venda completo.
+                        </p>
+                    </div>
+
+                    <!-- Valores -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg border-l-4" style="border-color: var(--terracota);">
+                        <div class="flex items-center mb-4">
+
+                            <h3 class="text-2xl font-bold" style="color: var(--terracota);">Valores</h3>
+                        </div>
+                        <p class="text-gray-700 leading-relaxed">
+                            <strong>Respeito, honestidade, dedicação, capricho, transparência e responsabilidade</strong>
+                            são os pilares que sustentam cada projeto que realizamos, garantindo confiança e
+                            satisfação em cada entrega.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center fade-in-up">
+            <a href="#contact" class="btn-secondary">
+                Entre em Contato
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Section Divider -->
+<div class="section-divider"></div>
+
+<!-- Fulget Info Section -->
+<section class="py-24 bg-white" id="fulget">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 fade-in-up">
+            <h2 class="text-4xl font-bold text-gray-900 mb-4">
+                Conheça o <span style="color: var(--verde-oliva);">Piso Fulget</span>
+            </h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Descubra as características únicas que fazem do Piso Fulget a melhor escolha para áreas externas
+            </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="card-hover bg-white p-8 rounded-2xl shadow-lg border border-gray-100 scale-in">
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">Revestimento Artesanal</h3>
+                <p class="text-gray-600 leading-relaxed">
+                    O piso Fulget é um revestimento artesanal confeccionado por mão de obra especializada, moldado in loco.
+                </p>
+            </div>
+            <div class="card-hover bg-white p-8 rounded-2xl shadow-lg border border-gray-100 scale-in">
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">Pedras Naturais</h3>
+                <p class="text-gray-600 leading-relaxed">
+                    Composto por pedras naturais e granilite, promovendo segurança antiderrapante e conforto atérmico.
+                </p>
+            </div>
+            <div class="card-hover bg-white p-8 rounded-2xl shadow-lg border border-gray-100 scale-in">
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">Ideal para Externas</h3>
+                <p class="text-gray-600 leading-relaxed">
+                    O revestimento mais escolhido para áreas externas, complementando a beleza natural dos jardins.
+                </p>
+            </div>
+            <div class="card-hover bg-white p-8 rounded-2xl shadow-lg border border-gray-100 scale-in">
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">Versatilidade</h3>
+                <p class="text-gray-600 leading-relaxed">
+                    A argamassa tem plasticidade, moldando requadrações, escadas e também formas orgânicas.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Wave Divider -->
+<div class="wave-divider" style="background: linear-gradient(135deg, var(--areia), var(--bege-claro));"></div>
+
+<!-- Gallery Section -->
+<section class="py-24 relative" style="background: linear-gradient(135deg, var(--areia), var(--bege-claro));" id="gallery">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 fade-in-up">
+            <h2 class="text-4xl font-bold text-gray-900 mb-4">
+                Nossa <span style="color: var(--verde-oliva);">Galeria</span>
+            </h2>
+            <p class="text-xl text-gray-600">
+                Explore nossa galeria de projetos realizados em Piso Fulget
+            </p>
+        </div>
+        <div class="gallery-grid fade-in-up">
+            <div class="gallery-item">
+                <img src="img/img_1.png" alt="Projeto Piso Fulget 1">
+            </div>
+            <div class="gallery-item">
+                <img src="img/img_2.png" alt="Projeto Piso Fulget 2">
+            </div>
+            <div class="gallery-item">
+                <img src="img/img_3.png" alt="Projeto Piso Fulget 3">
+            </div>
+            <div class="gallery-item">
+                <img src="img/img_4.png" alt="Projeto Piso Fulget 4">
+            </div>
+            <div class="gallery-item">
+                <img src="img/img_5.png" alt="Projeto Piso Fulget 5">
+            </div>
+            <div class="gallery-item">
+                <img src="img/img_6.png" alt="Projeto Piso Fulget 6">
+            </div>
+            <div class="gallery-item">
+                <img src="img/img_7.png" alt="Projeto Piso Fulget 7">
+            </div>
+            <div class="gallery-item">
+                <img src="img/img_8.png" alt="Projeto Piso Fulget 8">
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Section Divider -->
+<div class="section-divider"></div>
+
+<!-- Catalog Section -->
+<section class="py-24 bg-white" id="catalog">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 fade-in-up">
+            <h2 class="text-4xl font-bold text-gray-900 mb-4">
+                <span style="color: var(--verde-oliva);">Catálogo</span> de Inspirações
+            </h2>
+            <p class="text-xl text-gray-600">
+                Explore diferentes estilos e aplicações do Piso Fulget
+            </p>
+        </div>
+        <div class="catalog-grid fade-in-up">
+            <div class="gallery-item">
+                <img src="img/b100.jfif" alt="Projeto Piso Fulget 1">
+            </div>
+            <div class="gallery-item">
+                <img src="img/c102.jfif" alt="Projeto Piso Fulget 2">
+            </div>
+            <div class="gallery-item">
+                <img src="img/b22.jfif" alt="Projeto Piso Fulget 3">
+            </div>
+            <div class="gallery-item">
+                <img src="img/c31.jfif" alt="Projeto Piso Fulget 4">
+            </div>
+            <div class="gallery-item">
+                <img src="img/b21.jfif" alt="Projeto Piso Fulget 5">
+            </div>
+            <div class="gallery-item">
+                <img src="img/c55.jfif" alt="Projeto Piso Fulget 6">
+            </div>
+            <div class="gallery-item">
+                <img src="img/c551.jfif" alt="Projeto Piso Fulget 7">
+            </div>
+            <div class="gallery-item">
+                <img src="img/c01.jfif" alt="Projeto Piso Fulget 8">
+            </div>
+            <div class="gallery-item">
+                <img src="img/c21.jfif" alt="Projeto Piso Fulget 8">
+            </div>
+            <div class="gallery-item">
+                <img src="img/cor_c_31.jfif" alt="Projeto Piso Fulget 8">
+            </div>
+            <div class="gallery-item">
+                <img src="img/p100.jfif" alt="Projeto Piso Fulget 8">
+            </div>
+            <div class="gallery-item">
+                <img src="img/b101.jfif" alt="Projeto Piso Fulget 8">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Wave Divider -->
+<div class="wave-divider" style="background: linear-gradient(135deg, var(--verde-oliva), var(--azul-petroleo));"></div>
+
+<!-- Contact Section -->
+<section class="py-24 relative" style="background: linear-gradient(135deg, var(--verde-oliva), var(--azul-petroleo));" id="contact">
+    <div class="absolute inset-0 bg-gradient-to-br from-black/20 via-transparent to-black/10"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid lg:grid-cols-2 gap-16">
+            <div class="slide-in-left">
+                <h2 class="text-4xl font-bold text-white mb-4">
+                    Solicite seu <span style="color: var(--ocre);">Orçamento</span>
+                </h2>
+                <p class="text-xl text-gray-200 mb-8">
+                    Entre em contato conosco e transforme seu projeto em realidade
+                </p>
+                <div class="space-y-6">
+                    <input type="text" placeholder="Seu Nome Completo"
+                           class="w-full px-6 py-4 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-ocre focus:border-transparent">
+                    <input type="email" placeholder="Seu Email"
+                           class="w-full px-6 py-4 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-ocre focus:border-transparent">
+                    <input type="tel" placeholder="Seu Telefone"
+                           class="w-full px-6 py-4 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-ocre focus:border-transparent">
+                    <textarea placeholder="Descreva seu projeto" rows="4"
+                              class="w-full px-6 py-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-ocre focus:border-transparent resize-none"></textarea>
+                    <button type="submit" class="w-full btn-primary">
+                        Enviar Mensagem
+                        <i class="fas fa-paper-plane ml-2"></i>
+                    </button>
+                </div>
+                <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                    <a href="mailto:contato@nreveste.com.br" class="btn-outline text-white border-white hover:bg-white hover:text-verde-oliva">
+                        <i class="fas fa-envelope mr-2"></i>
+                        Email
+                    </a>
+                    <a href="https://wa.me/5511974132034?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20para%20Piso%20Fulget."
+                       target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 rounded-full transition-all duration-300">
+                        <i class="fab fa-whatsapp mr-2"></i>
+                        WhatsApp
+                    </a>
+                </div>
+            </div>
+            <div class="slide-in-right">
+                <div class="bg-white/95 backdrop-blur-sm rounded-3xl p-8 shadow-2xl">
+                    <div class="text-center mb-8">
+                        <img src="https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg" alt="N Reveste" class="h-16 w-16 rounded-full object-cover mx-auto mb-4">
+                        <h3 class="text-2xl font-bold" style="color: var(--verde-oliva);">N REVESTE</h3>
+                        <p class="text-gray-600">Especialistas em Piso Fulget</p>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full flex items-center justify-center mr-4" style="background-color: var(--verde-oliva);">
+                                <i class="fas fa-phone text-white"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-900">(11) 97413-2034</p>
+                                <p class="text-gray-600 text-sm">WhatsApp e Telefone</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full flex items-center justify-center mr-4" style="background-color: var(--ocre);">
+                                <i class="fas fa-envelope text-white"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-900">contato@nreveste.com.br</p>
+                                <p class="text-gray-600 text-sm">Email principal</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full flex items-center justify-center mr-4" style="background-color: var(--terracota);">
+                                <i class="fas fa-map-marker-alt text-white"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-900">São Paulo - SP</p>
+                                <p class="text-gray-600 text-sm">Atendemos toda Grande SP</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-center space-x-4 mt-8 pt-8 border-t border-gray-200">
+                        <a href="https://www.instagram.com/nreveste/" target="_blank"
+                           class="w-12 h-12 rounded-full bg-gradient-to-br from-pink-500 to-orange-500 flex items-center justify-center text-white hover:scale-110 transition-transform duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://wa.me/5511974132034" target="_blank"
+                           class="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-white hover:scale-110 transition-transform duration-300">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="mailto:contato@nreveste.com.br"
+                           class="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center text-white hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-16" style="background: var(--azul-petroleo);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <div class="flex items-center justify-center mb-6">
+                <img src="https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg" alt="N Reveste" class="h-12 w-12 rounded-full object-cover mr-3">
+                <h3 class="text-2xl font-bold text-white">N REVESTE</h3>
+            </div>
+            <p class="text-gray-300 mb-8 max-w-2xl mx-auto">
+                Especialistas em Piso Fulget desde 2020. Transformando espaços com qualidade artesanal e materiais naturais.
+            </p>
+            <div class="flex justify-center space-x-6 mb-8">
+                <a href="#home" class="text-gray-300 hover:text-white transition-colors duration-300">Início</a>
+                <a href="#about" class="text-gray-300 hover:text-white transition-colors duration-300">Sobre</a>
+                <a href="#fulget" class="text-gray-300 hover:text-white transition-colors duration-300">Piso Fulget</a>
+                <a href="#gallery" class="text-gray-300 hover:text-white transition-colors duration-300">Galeria</a>
+                <a href="#contact" class="text-gray-300 hover:text-white transition-colors duration-300">Contato</a>
+            </div>
+            <div class="flex justify-center space-x-4 mb-8">
+                <a href="https://www.instagram.com/nreveste/" target="_blank"
+                   class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://wa.me/5511974132034" target="_blank"
+                   class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="mailto:contato@nreveste.com.br"
+                   class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+            <div class="border-t border-white/20 pt-8">
+                <p class="text-gray-400 text-sm">
+                    © 2025 <strong style="color: var(--ocre);">N Reveste</strong>. Todos os direitos reservados.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Floating Buttons -->
+<div class="floating-buttons">
+    <a href="#home" class="floating-btn back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+    <a href="https://wa.me/5511974132034?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20para%20Piso%20Fulget."
+       class="floating-btn whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+</div>
+
+<script>
+    // Loading Screen
+    window.addEventListener('load', () => {
+        const loadingScreen = document.getElementById('loadingScreen');
+        setTimeout(() => {
+            loadingScreen.classList.add('fade-out');
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+            }, 1000);
+        }, 2500);
+    });
+
+    // Mobile Menu
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        const icon = mobileMenuBtn.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
+    });
+
+    // Header Scroll Effect
+    const header = document.getElementById('header');
+    const backToTop = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+            header.classList.add('shadow-lg');
+            backToTop.classList.add('show');
+        } else {
+            header.classList.remove('shadow-lg');
+            backToTop.classList.remove('show');
+        }
+    });
+
+    // Smooth Scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                const headerHeight = 80;
+                window.scrollTo({
+                    top: target.offsetTop - headerHeight,
+                    behavior: 'smooth'
+                });
+                mobileMenu.classList.add('hidden');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    });
+
+    // Animation Observer
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+
+    // Observe all animation elements
+    document.querySelectorAll('.fade-in-up, .slide-in-left, .slide-in-right, .scale-in').forEach(el => {
+        observer.observe(el);
+    });
+
+    // Form Submission
+    document.querySelector('form')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Mensagem enviada! Entraremos em contato em breve.');
+    });
+</script>
+</body>
+</html>
