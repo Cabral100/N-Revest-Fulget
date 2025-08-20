@@ -1156,9 +1156,17 @@
 }
 @media (max-width: 700px) {
     .videos-full-width .video-bg {
-        max-height: 220px;
+        width: 120%;        /* aumenta a largura além da tela */
+        max-width: none;    /* remove limite */
+        height: auto;
+        max-height: 280px;  /* um pouco maior que antes */
+        object-fit: cover;  /* garante que preencha sem deformar */
+        border-radius: 1rem;
+        margin-left: -10%;  /* centraliza o excesso */
     }
 }
+
+
     </style>
 </head>
 <body>
@@ -1265,8 +1273,8 @@
                         <h3 class="color-terracota">Valores</h3>
                         <p>
                             Respeito, honestidade, dedicação, capricho, transparência e responsabilidade
-                            são os pilares que sustentam cada projeto que realizamos, garantindo confiança e
-                            satisfação em cada entrega.
+                            são os pilares que sustentam cada trabalho que realizamos, garantindo confiança e
+                            satisfação em cada resultado.
                         </p>
                     </div>
                 </div>
@@ -1297,13 +1305,13 @@
             <div class="card scale-in">
                 <h3>Revestimento Artesanal</h3>
                 <p>
-                    O piso Fulget é um revestimento artesanal confeccionado por mão de obra especializada, moldado in loco.
+                    O piso Fulget é um revestimento artesanal confeccionado tecnicamente por mão de obra especializada, moldado in loco.
                 </p>
             </div>
             <div class="card scale-in">
                 <h3>Pedras Naturais</h3>
                 <p>
-                    Composto por pedras naturais e granilite, promovendo segurança antiderrapante e conforto atérmico.
+                    Composto por pedras naturais e agregados de granilite, promovendo segurança antiderrapante e conforto atérmico.
                 </p>
             </div>
             <div class="card scale-in">
@@ -1384,9 +1392,8 @@
                     <source src="img/WhatsApp Video 2025-08-20 at 16.12.55.mp4" type="video/mp4">
                 </video>
             </div>
-           
         </div>
-    </div>
+    </div>  
 </section>
 
 <!-- Catalog Section -->
