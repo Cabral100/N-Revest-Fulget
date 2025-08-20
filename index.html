@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --verde-oliva: #8A9A5B;
+            --verde-oliva: #808160;
             --ocre: #D4A574;
             --terracota: #A0522D;
             --cinza-pedra: #B8B5A7;
@@ -1096,6 +1096,69 @@
                 background: white !important;
             }
         }
+
+.videos-full-width {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+}
+.videos-full-width .video-bg-card {
+    background: transparent;
+    border-radius: 1.5rem;
+    box-shadow: none;
+    overflow: visible;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    transform: none;
+}
+.videos-full-width .video-bg {
+    display: block;
+    pointer-events: none;
+    border-radius: 1.5rem;
+    width: auto;
+    height: auto;
+    max-width: 100vw;
+    max-height: 400px;
+    object-fit: contain;
+    background: transparent;
+}
+@media (max-width: 1100px) {
+    .videos-full-width {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 0;
+        align-items: center;
+    }
+    .videos-full-width .video-bg-card {
+        width: auto;
+        max-width: 100vw;
+        height: auto;
+        background: transparent;
+        box-shadow: none;
+        border-radius: 1.5rem;
+        overflow: visible;
+    }
+    .videos-full-width .video-bg {
+        width: auto;
+        max-width: 100vw;
+        height: auto;
+        max-height: 400px;
+        object-fit: contain;
+        border-radius: 1.5rem;
+        background: transparent;
+    }
+}
+@media (max-width: 700px) {
+    .videos-full-width .video-bg {
+        max-height: 220px;
+    }
+}
     </style>
 </head>
 <body>
@@ -1147,7 +1210,7 @@
 
 <!-- Hero Section -->
 <section class="hero-section" id="home" role="banner">
-    <img src="img/img_6.png" class="hero-video" alt="Piso Fulget em área externa" loading="eager">
+    <img src="img/heroft1.png" class="hero-video" alt="Piso Fulget em área externa" loading="eager">
     <div class="hero-overlay"></div>
     <div class="hero-content">
         <div class="hero-logo">
@@ -1171,7 +1234,7 @@
                 Nossa <span>História</span>
             </h2>
             <p class="section-subtitle">
-                Construindo espaços com excelência artesanal desde 2020
+                Revestindo acessos com excelência
             </p>
         </div>
 
@@ -1182,11 +1245,10 @@
             <div class="slide-in-right">
                 <div style="display: flex; flex-direction: column; gap: 2rem;">
                     <div class="card card-foundation">
-                        <h3 class="color-verde-oliva">Fundação</h3>
+                        <h3 class="color-verde-oliva">Origem</h3>
                         <p>
-                            Fundada em 2020 pela arquiteta <strong class="color-terracota">Neia Lippi</strong>,
-                            a N Reveste nasceu da paixão por criar revestimentos únicos que harmonizam com a natureza,
-                            especializando-se em Piso Fulget para áreas externas.
+                            Néia Lippi, formada em arquitetura, se especializou no segmento, promovendo um revestimento único, que harmoniza com a natureza, criando acessos que ornamentam os espaços.<br>
+                            A experiência técnica resulta em acabamento de excelência, resistência do material e qualidade de um atendimento personalizado, dispondo de assessoria direta com os envolvidos no projeto.
                         </p>
                     </div>
 
@@ -1273,29 +1335,56 @@
         </div>
         <div class="gallery-grid fade-in-up" role="img" aria-label="Galeria de projetos N Reveste">
             <div class="gallery-item">
-                <img src="img/img_1.png" alt="Projeto Piso Fulget em área de lazer com piscina" loading="lazy">
+                <img src="img/gale1.png" alt="Projeto Piso Fulget em área de lazer com piscina" loading="lazy">
             </div>
             <div class="gallery-item">
-                <img src="img/img_2.png" alt="Piso Fulget aplicado em entrada residencial" loading="lazy">
+                <img src="img/gale2.png" alt="Piso Fulget aplicado em entrada residencial" loading="lazy">
             </div>
             <div class="gallery-item">
-                <img src="img/img_3.png" alt="Área gourmet com Piso Fulget e paisagismo" loading="lazy">
+                <img src="img/gale3.png" alt="Área gourmet com Piso Fulget e paisagismo" loading="lazy">
             </div>
             <div class="gallery-item">
-                <img src="img/img_4.png" alt="Piso Fulget em jardim com plantas ornamentais" loading="lazy">
+                <img src="img/gale4.png" alt="Piso Fulget em jardim com plantas ornamentais" loading="lazy">
             </div>
             <div class="gallery-item">
-                <img src="img/img_5.png" alt="Caminho em Piso Fulget entre jardins" loading="lazy">
+                <img src="img/gale5.png" alt="Caminho em Piso Fulget entre jardins" loading="lazy">
             </div>
             <div class="gallery-item">
-                <img src="img/img_6.png" alt="Área externa completa com Piso Fulget" loading="lazy">
+                <img src="img/gale6.png" alt="Área externa completa com Piso Fulget" loading="lazy">
             </div>
             <div class="gallery-item">
-                <img src="img/img_7.png" alt="Piso Fulget em varanda com móveis externos" loading="lazy">
+                <img src="img/gale7.png" alt="Piso Fulget em varanda com móveis externos" loading="lazy">
             </div>
             <div class="gallery-item">
-                <img src="img/img_8.png" alt="Detalhe da textura do Piso Fulget" loading="lazy">
+                <img src="img/gale8.png" alt="Detalhe da textura do Piso Fulget" loading="lazy">
             </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="section" id="videos" style="background: #f9fafb;">
+    <div class="container">
+        <div class="fade-in-up" style="text-align: center; margin-bottom: 4rem;">
+            <h2 class="section-title">
+                Veja o <span>Piso Fulget</span> em ação
+            </h2>
+            <p class="section-subtitle">
+                Assista aos vídeos e confira detalhes do acabamento e aplicação do Piso Fulget
+            </p>
+        </div>
+        <div class="videos-full-width">
+            <div class="video-bg-card">
+                <video class="video-bg" autoplay muted loop playsinline>
+                    <source src="img/WhatsApp Video 2025-08-20 at 15.34.57.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="video-bg-card">
+                <video class="video-bg" autoplay muted loop playsinline>
+                    <source src="img/WhatsApp Video 2025-08-20 at 16.12.55.mp4" type="video/mp4">
+                </video>
+            </div>
+           
         </div>
     </div>
 </section>
