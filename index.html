@@ -298,7 +298,7 @@
             filter: brightness(0) invert(1) drop-shadow(0 8px 16px rgba(0,0,0,0.3));
         }
 
-     
+
 
         @keyframes heroSubtitleFadeUp {
             0% {
@@ -586,6 +586,7 @@
             transition: all 0.3s ease;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             width: 100%;
+            height: 100%;
         }
 
         .gallery-item:hover {
@@ -595,7 +596,7 @@
 
         .gallery-item img {
             width: 100%;
-            height: clamp(200px, 30vw, 300px);
+            height: clamp(400px, 40vw, 400px);
             object-fit: cover;
             transition: transform 0.3s ease;
             display: block;
@@ -682,18 +683,22 @@
             align-items: center;
             gap: 1rem;
             flex-wrap: wrap;
+            width: 300px;
         }
 
         .contact-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
+            width: 50px;       /* largura do círculo */
+            height: 50px;      /* mesma altura = círculo perfeito */
+            border-radius: 50%; /* círculo perfeito */
             display: flex;
             align-items: center;
             justify-content: center;
+            background: #333;   /* fundo para visualizar */
             color: white;
             flex-shrink: 0;
+            font-size: 12px;   /* tamanho do ícone dentro */
         }
+
 
         .icon-phone { background-color: var(--verde-oliva); }
         .icon-email { background-color: var(--ocre); }
@@ -706,8 +711,7 @@
 
         .contact-item p {
             margin: 0;
-            word-break: break-word;
-            font-size: clamp(0.875rem, 2.5vw, 1rem);
+            white-space: nowrap; /* impede quebra do texto */
         }
 
         .social-links {
@@ -740,6 +744,8 @@
         .instagram { background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); }
         .whatsapp { background: #25D366; }
         .email { background: #3b82f6; }
+        /* Nova cor do Facebook */
+        .facebook { background: #1877F2; }
 
         /* Footer */
         .footer {
@@ -851,6 +857,99 @@
             background: #25D366;
         }
 
+
+        /* NOVO CSS - Menu Mobile Centralizado */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 60;
+            transform: translateY(-100%);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-menu.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: translateY(0);
+        }
+
+        .mobile-menu-content {
+            text-align: center;
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            padding: 2rem;
+        }
+
+        /* Botão X para fechar */
+        .mobile-menu-close {
+            position: absolute;
+            top: -3rem;
+            right: 0;
+            background: transparent;
+            border: none;
+            font-size: 2rem;
+            color: #111827;
+            cursor: pointer;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-close:hover {
+            background: rgba(107, 114, 128, 0.1);
+            transform: rotate(90deg); /* Efeito de rotação */
+        }
+
+        /* Links do menu com animações */
+        .mobile-nav-link {
+            padding: 1rem 2rem;
+            color: #111827;
+            border-radius: 50px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            display: block;
+            background: rgba(138, 154, 91, 0.1);
+            border: 2px solid transparent;
+            transform: translateY(20px);
+            opacity: 0;
+        }
+
+        .mobile-menu.show .mobile-nav-link {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Delays progressivos para animação */
+        .mobile-nav-link:nth-child(1) { transition-delay: 0.1s; }
+        .mobile-nav-link:nth-child(2) { transition-delay: 0.15s; }
+        .mobile-nav-link:nth-child(3) { transition-delay: 0.2s; }
+        .mobile-nav-link:nth-child(4) { transition-delay: 0.25s; }
+        .mobile-nav-link:nth-child(5) { transition-delay: 0.3s; }
+        .mobile-nav-link:nth-child(6) { transition-delay: 0.35s; }
+
+        /* Efeito hover com elevação */
+        .mobile-nav-link:hover,
+        .mobile-nav-link:active {
+            color: white;
+            background: var(--verde-oliva);
+            border-color: var(--verde-oliva);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(138, 154, 91, 0.3);
+        }
         /* Animation Classes */
         .fade-in-up {
             opacity: 0;
@@ -926,7 +1025,10 @@
             .catalog-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
-
+            .contact-item p {
+                margin: 0;
+                white-space: nowrap; /* impede quebra do texto */
+            }
             .grid-3 {
                 grid-template-columns: repeat(3, 1fr);
             }
@@ -940,7 +1042,10 @@
             .nav-desktop {
                 gap: 2rem;
             }
-
+            .contact-item p {
+                margin: 0;
+                white-space: nowrap; /* impede quebra do texto */
+            }
             .grid-3 {
                 grid-template-columns: repeat(4, 1fr);
             }
@@ -1021,15 +1126,21 @@
                 <i class="fas fa-bars" aria-hidden="true"></i>
             </button>
         </div>
+        <!-- NOVO HTML com botão X -->
         <div class="mobile-menu" id="mobileMenu">
-            <nav class="mobile-nav" role="navigation" aria-label="Menu mobile">
-                <a href="#home" class="mobile-nav-link">Início</a>
-                <a href="#about" class="mobile-nav-link">Sobre</a>
-                <a href="#fulget" class="mobile-nav-link">Piso Fulget</a>
-                <a href="#gallery" class="mobile-nav-link">Galeria</a>
-                <a href="#catalog" class="mobile-nav-link">Catálogo</a>
-                <a href="#contact" class="mobile-nav-link">Contato</a>
-            </nav>
+            <div class="mobile-menu-content">
+                <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Fechar menu">
+                    <i class="fas fa-times"></i>
+                </button>
+                <nav class="mobile-nav" role="navigation" aria-label="Menu mobile">
+                    <a href="#home" class="mobile-nav-link">Início</a>
+                    <a href="#about" class="mobile-nav-link">Sobre</a>
+                    <a href="#fulget" class="mobile-nav-link">Piso Fulget</a>
+                    <a href="#gallery" class="mobile-nav-link">Galeria</a>
+                    <a href="#catalog" class="mobile-nav-link">Catálogo</a>
+                    <a href="#contact" class="mobile-nav-link">Contato</a>
+                </nav>
+            </div>
         </div>
     </div>
 </header>
@@ -1354,14 +1465,19 @@
                                 <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
                             </div>
                             <div>
-                                <p style="font-weight: 600; color: #111827; margin: 0;">São Paulo - SP</p>
+                                <p style="font-weight: 600; color: #111827; margin: 0;">Mogi das Cruzes - SP</p>
                                 <p style="color: #6b7280; font-size: clamp(0.75rem, 2vw, 0.875rem); margin: 0;">Atendemos toda Grande SP</p>
                             </div>
                         </div>
                     </div>
+                    <!-- Seção de Contato -->
                     <div class="social-links">
                         <a href="https://www.instagram.com/n_reveste/" target="_blank" rel="noopener noreferrer" class="social-link instagram" aria-label="Instagram N Reveste">
                             <i class="fab fa-instagram" aria-hidden="true"></i>
+                        </a>
+                        <!-- NOVO - Facebook adicionado -->
+                        <a href="https://www.facebook.com/pisofulget.nreveste" target="_blank" rel="noopener noreferrer" class="social-link facebook" aria-label="Facebook Piso Fulget N Reveste">
+                            <i class="fab fa-facebook-f" aria-hidden="true"></i>
                         </a>
                         <a href="https://wa.me/5511974132034" target="_blank" rel="noopener noreferrer" class="social-link whatsapp" aria-label="WhatsApp N Reveste">
                             <i class="fab fa-whatsapp" aria-hidden="true"></i>
@@ -1389,6 +1505,10 @@
             <div class="footer-social">
                 <a href="https://www.instagram.com/n_reveste/" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Instagram N Reveste">
                     <i class="fab fa-instagram" aria-hidden="true"></i>
+                </a>
+                <!-- NOVO - Facebook no footer também -->
+                <a href="https://www.facebook.com/pisofulget.nreveste" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Facebook Piso Fulget N Reveste">
+                    <i class="fab fa-facebook-f" aria-hidden="true"></i>
                 </a>
                 <a href="https://wa.me/5511974132034" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="WhatsApp N Reveste">
                     <i class="fab fa-whatsapp" aria-hidden="true"></i>
@@ -1947,6 +2067,32 @@ Projeto: ${message}`
     }
 
     setupCSSFallbacks();
+
+
+    // NOVA função para abrir/fechar menu
+    function openMobileMenu() {
+        mobileMenu.classList.add('show');
+        mobileMenuBtn.setAttribute('aria-expanded', 'true');
+        mobileMenuBtn.setAttribute('aria-label', 'Fechar menu mobile');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
+    }
+
+    function closeMobileMenu() {
+        mobileMenu.classList.remove('show');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        mobileMenuBtn.setAttribute('aria-label', 'Abrir menu mobile');
+        document.body.style.overflow = ''; // Restore scrolling
+    }
+
+    // Event listeners para o botão X
+    mobileMenuClose.addEventListener('click', closeMobileMenu);
+
+    // Close menu quando clicar no overlay
+    mobileMenu.addEventListener('click', (e) => {
+        if (e.target === mobileMenu) {
+            closeMobileMenu();
+        }
+    });
 </script>
 
 </body>
