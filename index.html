@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
@@ -192,14 +193,16 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 2rem;
+            gap: 1.5rem;
+            /* AJUSTADO */
         }
 
         /* Logo no menu mobile */
         .mobile-menu-logo {
             width: clamp(80px, 20vw, 120px);
             height: auto;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
+            /* AJUSTADO */
         }
 
         .mobile-nav {
@@ -209,6 +212,7 @@
             width: 100%;
             max-width: 300px;
         }
+
         /* Botão X para fechar */
         .mobile-menu-close {
             position: absolute;
@@ -267,12 +271,29 @@
         }
 
         /* Delays progressivos para animação */
-        .mobile-nav-link:nth-child(1) { transition-delay: 0.1s; }
-        .mobile-nav-link:nth-child(2) { transition-delay: 0.15s; }
-        .mobile-nav-link:nth-child(3) { transition-delay: 0.2s; }
-        .mobile-nav-link:nth-child(4) { transition-delay: 0.25s; }
-        .mobile-nav-link:nth-child(5) { transition-delay: 0.3s; }
-        .mobile-nav-link:nth-child(6) { transition-delay: 0.35s; }
+        .mobile-nav-link:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .mobile-nav-link:nth-child(2) {
+            transition-delay: 0.15s;
+        }
+
+        .mobile-nav-link:nth-child(3) {
+            transition-delay: 0.2s;
+        }
+
+        .mobile-nav-link:nth-child(4) {
+            transition-delay: 0.25s;
+        }
+
+        .mobile-nav-link:nth-child(5) {
+            transition-delay: 0.3s;
+        }
+
+        .mobile-nav-link:nth-child(6) {
+            transition-delay: 0.35s;
+        }
 
         /* Efeito hover/active com cor verde */
         .mobile-nav-link:hover,
@@ -286,7 +307,8 @@
         }
 
         /* Section Backgrounds */
-        #fulget, #catalog {
+        #fulget,
+        #catalog {
             background: var(--bege-claro);
         }
 
@@ -324,7 +346,7 @@
         .hero-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to bottom right, rgba(0,0,0,0.5), transparent, rgba(138, 154, 91, 0.3));
+            background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.5), transparent, rgba(138, 154, 91, 0.3));
             z-index: 1;
         }
 
@@ -391,13 +413,16 @@
         .logo-nreveste {
             width: clamp(150px, 30vw, 300px);
             height: auto;
-            filter: brightness(0) invert(1) drop-shadow(0 8px 16px rgba(0,0,0,0.3));
+            filter: brightness(0) invert(1) drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
         }
 
         @keyframes logoFloat {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0px);
             }
+
             50% {
                 transform: translateY(-10px);
             }
@@ -408,6 +433,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             100% {
                 opacity: 1;
                 transform: translateY(0);
@@ -419,6 +445,7 @@
                 opacity: 0;
                 transform: translateY(20px) scale(0.9);
             }
+
             100% {
                 opacity: 1;
                 transform: translateY(0) scale(1);
@@ -543,10 +570,21 @@
         }
 
         /* Color Classes */
-        .color-verde-oliva { color: var(--verde-oliva); }
-        .color-ocre { color: var(--ocre); }
-        .color-terracota { color: var(--terracota); }
-        .company-name { color: var(--ocre); }
+        .color-verde-oliva {
+            color: var(--verde-oliva);
+        }
+
+        .color-ocre {
+            color: var(--ocre);
+        }
+
+        .color-terracota {
+            color: var(--terracota);
+        }
+
+        .company-name {
+            color: var(--ocre);
+        }
 
         /* Card Styles */
         .card {
@@ -561,12 +599,23 @@
 
         .card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
 
-        .card-foundation { border-left: 4px solid var(--verde-oliva); background: #f9fafb; }
-        .card-mission { border-left: 4px solid var(--ocre); background: #f9fafb; }
-        .card-values { border-left: 4px solid var(--terracota); background: #f9fafb; }
+        .card-foundation {
+            border-left: 4px solid var(--verde-oliva);
+            background: #f9fafb;
+        }
+
+        .card-mission {
+            border-left: 4px solid var(--ocre);
+            background: #f9fafb;
+        }
+
+        .card-values {
+            border-left: 4px solid var(--terracota);
+            background: #f9fafb;
+        }
 
         .card h3 {
             font-size: clamp(1.125rem, 3vw, 1.25rem);
@@ -616,7 +665,7 @@
             background: white;
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
             position: relative;
             cursor: pointer;
@@ -625,7 +674,7 @@
 
         .catalog-item:hover {
             transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
         }
 
         .catalog-item-image {
@@ -640,7 +689,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.3));
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
             opacity: 0;
             transition: all 0.3s ease;
             display: flex;
@@ -679,7 +728,7 @@
             transform: scale(1.05);
         }
 
-        /* NEW Gallery Section (Masonry) */
+        /* Gallery Section (CORRIGIDO COM CSS GRID) */
         .gallery-section {
             background: var(--musgo);
         }
@@ -689,40 +738,39 @@
         }
 
         .gallery-subtitle {
-            color: rgba(255,255,255,0.8);
+            color: rgba(255, 255, 255, 0.8);
         }
 
         .gallery-grid {
-            columns: 1;
+            display: grid;
+            grid-template-columns: 1fr;
+            /* Padrão para mobile */
             gap: 1.5rem;
         }
 
         .gallery-item {
             width: 100%;
-            display: inline-block;
-            margin-bottom: 1.5rem;
             position: relative;
             overflow: hidden;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
             cursor: pointer;
+            aspect-ratio: 4 / 3;
+            /* NOVO: Proporção fixa para todos os itens */
         }
 
         .gallery-item:hover {
             transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-        }
-
-        /* Removido o overlay e o título da imagem da galeria */
-        .gallery-item::before,
-        .gallery-item-title {
-            display: none;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
         }
 
         .gallery-item img {
             width: 100%;
-            height: auto;
+            height: 100%;
+            /* NOVO: Imagem preenche o contêiner */
+            object-fit: cover;
+            /* NOVO: Imagem cobre a área sem distorcer */
             display: block;
             transition: transform 0.4s ease;
         }
@@ -753,9 +801,9 @@
             width: 100%;
             padding: 1rem 1.5rem;
             border-radius: 50px;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(4px);
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             color: white;
             font-size: clamp(0.875rem, 2.5vw, 1rem);
             transition: border-color 0.3s ease;
@@ -764,7 +812,7 @@
         }
 
         .form-input::placeholder {
-            color: rgba(255,255,255,0.7);
+            color: rgba(255, 255, 255, 0.7);
         }
 
         .form-input:focus {
@@ -786,7 +834,7 @@
         }
 
         .contact-card {
-            background: rgba(255,255,255,0.95);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(4px);
             border-radius: 1.5rem;
             padding: clamp(1.5rem, 4vw, 2rem);
@@ -828,11 +876,19 @@
             font-size: 18px;
         }
 
-        .icon-phone { background-color: var(--verde-oliva); }
-        .icon-email { background-color: var(--ocre); }
-        .icon-location { background-color: var(--terracota); }
+        .icon-phone {
+            background-color: var(--verde-oliva);
+        }
 
-        .contact-item > div {
+        .icon-email {
+            background-color: var(--ocre);
+        }
+
+        .icon-location {
+            background-color: var(--terracota);
+        }
+
+        .contact-item>div {
             flex: 1;
             min-width: 0;
         }
@@ -870,10 +926,21 @@
             transform: scale(1.1);
         }
 
-        .instagram { background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); }
-        .whatsapp { background: #25D366; }
-        .email { background: #3b82f6; }
-        .facebook { background: #1877F2; }
+        .instagram {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+
+        .whatsapp {
+            background: #25D366;
+        }
+
+        .email {
+            background: #3b82f6;
+        }
+
+        .facebook {
+            background: #1877F2;
+        }
 
         /* Footer */
         .footer {
@@ -913,7 +980,7 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -924,11 +991,11 @@
         }
 
         .footer-social-link:hover {
-            background: rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.2);
         }
 
         .footer-divider {
-            border-top: 1px solid rgba(255,255,255,0.2);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
             padding-top: 2rem;
         }
 
@@ -1045,39 +1112,61 @@
         }
 
         /* Staggered delay for reveal animation */
-        #fulget .grid-3 .card.animate-reveal:nth-child(1) { transition-delay: 0.1s; }
-        #fulget .grid-3 .card.animate-reveal:nth-child(2) { transition-delay: 0.2s; }
-        #fulget .grid-3 .card.animate-reveal:nth-child(3) { transition-delay: 0.3s; }
-        #fulget .grid-3 .card.animate-reveal:nth-child(4) { transition-delay: 0.4s; }
+        #fulget .grid-3 .card.animate-reveal:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        #fulget .grid-3 .card.animate-reveal:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        #fulget .grid-3 .card.animate-reveal:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        #fulget .grid-3 .card.animate-reveal:nth-child(4) {
+            transition-delay: 0.4s;
+        }
 
 
         /* Vídeos - Estilo atualizado */
         .videos-container {
             width: 100%;
             overflow: hidden;
-            display: flex; /* Para centralizar horizontalmente */
+            display: flex;
+            /* Para centralizar horizontalmente */
             justify-content: center;
-            flex-direction: column; /* Em coluna para mobile */
-            gap: 1.5rem; /* Espaçamento entre os vídeos */
-            padding: 0 clamp(1rem, 4vw, 2rem); /* Padding da container */
-            margin-top: clamp(3rem, 8vw, 6rem); /* Espaçamento com a seção acima */
-            margin-bottom: clamp(3rem, 8vw, 6rem); /* Espaçamento com a seção abaixo */
+            flex-direction: column;
+            /* Em coluna para mobile */
+            gap: 1.5rem;
+            /* Espaçamento entre os vídeos */
+            padding: 0 clamp(1rem, 4vw, 2rem);
+            /* Padding da container */
+            margin-top: clamp(3rem, 8vw, 6rem);
+            /* Espaçamento com a seção acima */
+            margin-bottom: clamp(3rem, 8vw, 6rem);
+            /* Espaçamento com a seção abaixo */
         }
 
         .video-wrapper {
             width: 100%;
-            max-width: 800px; /* Limite de largura para vídeos em desktop */
-            margin: 0 auto; /* Centraliza vídeos no desktop */
+            max-width: 800px;
+            /* Limite de largura para vídeos em desktop */
+            margin: 0 auto;
+            /* Centraliza vídeos no desktop */
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            background-color: black; /* Fundo preto para preencher letterboxing */
-            line-height: 0; /* Remove espaço extra de linha */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            background-color: black;
+            /* Fundo preto para preencher letterboxing */
+            line-height: 0;
+            /* Remove espaço extra de linha */
         }
 
         .video-wrapper video {
             width: 100%;
-            height: auto; /* Altura automática para manter proporção */
+            height: auto;
+            /* Altura automática para manter proporção */
             display: block;
         }
 
@@ -1104,8 +1193,10 @@
             .catalog-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+
             .gallery-grid {
-                columns: 2;
+                grid-template-columns: repeat(2, 1fr);
+                /* CORRIGIDO */
             }
         }
 
@@ -1123,7 +1214,8 @@
             }
 
             .gallery-grid {
-                columns: 3;
+                grid-template-columns: repeat(3, 1fr);
+                /* CORRIGIDO */
             }
 
             .contact-grid {
@@ -1150,16 +1242,20 @@
             /* Desktop - Videos lado a lado */
             .videos-container {
                 flex-direction: row;
-                flex-wrap: wrap; /* Permite quebrar linha se necessário */
+                flex-wrap: wrap;
+                /* Permite quebrar linha se necessário */
                 gap: 2rem;
                 justify-content: center;
                 padding: 0 clamp(2rem, 6vw, 4rem);
             }
 
             .video-wrapper {
-                flex: 1; /* Permite que os vídeos cresçam e diminuam */
-                min-width: 300px; /* Largura mínima para vídeos no desktop */
-                max-width: 48%; /* Para ter dois vídeos por linha */
+                flex: 1;
+                /* Permite que os vídeos cresçam e diminuam */
+                min-width: 300px;
+                /* Largura mínima para vídeos no desktop */
+                max-width: 48%;
+                /* Para ter dois vídeos por linha */
             }
         }
 
@@ -1169,7 +1265,8 @@
             }
 
             .gallery-grid {
-                columns: 4;
+                grid-template-columns: repeat(4, 1fr);
+                /* CORRIGIDO */
             }
 
             .nav-desktop {
@@ -1181,12 +1278,15 @@
             }
 
             .video-wrapper {
-                max-width: 580px; /* Ajusta o tamanho dos vídeos para telas maiores */
+                max-width: 580px;
+                /* Ajusta o tamanho dos vídeos para telas maiores */
             }
         }
 
         /* High DPI displays */
-        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+        @media (-webkit-min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi) {
+
             .header-logo,
             .hero-logo img,
             .footer-logo {
@@ -1197,6 +1297,7 @@
 
         /* Accessibility improvements */
         @media (prefers-reduced-motion: reduce) {
+
             *,
             *::before,
             *::after {
@@ -1220,6 +1321,7 @@
 
         /* Print styles */
         @media print {
+
             .header,
             .floating-buttons,
             .loading-screen {
@@ -1232,6 +1334,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <div class="loading-screen" id="loadingScreen">
@@ -1285,7 +1388,8 @@
             <div class="hero-overlay"></div>
             <div class="hero-content">
                 <div class="hero-logo">
-                    <img src="img/Logo%20N%20Reveste%20-%20Branco.png" alt="N Reveste - Especialistas em Piso Fulget" loading="eager">
+                    <img src="img/Logo%20N%20Reveste%20-%20Branco.png" alt="N Reveste - Especialistas em Piso Fulget"
+                        loading="eager">
                 </div>
                 <p class="hero-subtitle">
                     Revestindo com pedras naturais desde 2020
@@ -1310,15 +1414,20 @@
 
                 <div class="grid-2 about-grid">
                     <div class="slide-in-left">
-                        <img class="about-image" src="img/sobre.png" alt="Equipe N Reveste trabalhando em projeto de Piso Fulget" loading="lazy" />
+                        <img class="about-image" src="img/sobre.png"
+                            alt="Equipe N Reveste trabalhando em projeto de Piso Fulget" loading="lazy" />
                     </div>
                     <div class="slide-in-right">
                         <div style="display: flex; flex-direction: column; gap: 2rem;">
                             <div class="card card-foundation scale-in">
                                 <h3 class="color-verde-oliva">Origem</h3>
                                 <p>
-                                    Néia Lippi, formada em arquitetura, se especializou no segmento, promovendo um revestimento único, que harmoniza com a natureza, criando acessos que ornamentam os espaços.<br>
-                                    A experiência técnica resulta em acabamento de excelência, resistência do material e qualidade de um atendimento personalizado, dispondo de assessoria direta com os envolvidos no projeto.
+                                    Néia Lippi, formada em arquitetura, se especializou no segmento, promovendo um
+                                    revestimento único, que harmoniza com a natureza, criando acessos que ornamentam os
+                                    espaços.<br>
+                                    A experiência técnica resulta em acabamento de excelência, resistência do material e
+                                    qualidade de um atendimento personalizado, dispondo de assessoria direta com os
+                                    envolvidos no projeto.
                                 </p>
                             </div>
 
@@ -1326,7 +1435,8 @@
                                 <h3 class="color-ocre">Missão</h3>
                                 <p>
                                     Confeccionar o melhor revestimento artesanal, com excelência desde a escolha
-                                    da matéria-prima até o acabamento final, garantindo um atendimento excepcional e suporte
+                                    da matéria-prima até o acabamento final, garantindo um atendimento excepcional e
+                                    suporte
                                     pós-venda completo.
                                 </p>
                             </div>
@@ -1366,19 +1476,22 @@
                     <div class="card animate-reveal">
                         <h3>Revestimento Artesanal</h3>
                         <p>
-                            O piso Fulget é um revestimento artesanal confeccionado tecnicamente por mão de obra especializada, moldado in loco.
+                            O piso Fulget é um revestimento artesanal confeccionado tecnicamente por mão de obra
+                            especializada, moldado in loco.
                         </p>
                     </div>
                     <div class="card animate-reveal">
                         <h3>Pedras Naturais</h3>
                         <p>
-                            Composto por pedras naturais e agregados de granilite, promovendo segurança antiderrapante e conforto atérmico.
+                            Composto por pedras naturais e agregados de granilite, promovendo segurança antiderrapante e
+                            conforto atérmico.
                         </p>
                     </div>
                     <div class="card animate-reveal">
                         <h3>Ideal para Externas</h3>
                         <p>
-                            O revestimento mais escolhido para áreas externas, complementando a beleza natural dos jardins.
+                            O revestimento mais escolhido para áreas externas, complementando a beleza natural dos
+                            jardins.
                         </p>
                     </div>
                     <div class="card animate-reveal">
@@ -1569,22 +1682,30 @@
         </section>
 
         <section class="section" id="contact">
-            <div style="position: absolute; inset: 0; background: linear-gradient(to bottom right, rgba(0,0,0,0.2), transparent, rgba(0,0,0,0.1));"></div>
+            <div
+                style="position: absolute; inset: 0; background: linear-gradient(to bottom right, rgba(0,0,0,0.2), transparent, rgba(0,0,0,0.1));">
+            </div>
             <div class="container" style="position: relative; z-index: 10;">
                 <div class="grid-1 contact-grid">
                     <div class="slide-in-left">
                         <h2 class="section-title" style="color: white; text-align: left; margin-bottom: 1.5rem;">
                             Solicite seu Orçamento
                         </h2>
-                        <p style="font-size: clamp(1rem, 3vw, 1.25rem); color: #e5e7eb; margin-bottom: 2rem; line-height: 1.6;">
+                        <p
+                            style="font-size: clamp(1rem, 3vw, 1.25rem); color: #e5e7eb; margin-bottom: 2rem; line-height: 1.6;">
                             Entre em contato conosco e transforme seu projeto em realidade
                         </p>
                         <form class="contact-form" role="form" aria-label="Formulário de contato">
-                            <input type="text" placeholder="Seu Nome Completo" class="form-input" id="contactName" required aria-label="Nome completo">
-                            <input type="email" placeholder="Seu Email" class="form-input" id="contactEmail" required aria-label="Endereço de email">
-                            <input type="tel" placeholder="Seu Telefone" class="form-input" id="contactPhone" required aria-label="Número de telefone">
-                            <textarea placeholder="Descreva seu projeto" class="form-input form-textarea" id="contactMessage" required aria-label="Descrição do projeto"></textarea>
-                            <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;" id="submitBtn" aria-label="Enviar mensagem de contato">
+                            <input type="text" placeholder="Seu Nome Completo" class="form-input" id="contactName"
+                                required aria-label="Nome completo">
+                            <input type="email" placeholder="Seu Email" class="form-input" id="contactEmail" required
+                                aria-label="Endereço de email">
+                            <input type="tel" placeholder="Seu Telefone" class="form-input" id="contactPhone" required
+                                aria-label="Número de telefone">
+                            <textarea placeholder="Descreva seu projeto" class="form-input form-textarea"
+                                id="contactMessage" required aria-label="Descrição do projeto"></textarea>
+                            <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;"
+                                id="submitBtn" aria-label="Enviar mensagem de contato">
                                 Enviar Mensagem
                                 <i class="fas fa-paper-plane" style="margin-left: 0.5rem;" aria-hidden="true"></i>
                             </button>
@@ -1593,8 +1714,10 @@
                     <div class="slide-in-right">
                         <div class="contact-card">
                             <div style="text-align: center; margin-bottom: 2rem;">
-                                <img src="img/Logo%20N%20Reveste%20-%20preto.png" alt="Logo N Reveste" class="contact-avatar" loading="lazy">
-                                <p style="color: #6b7280; font-size: clamp(0.875rem, 2.5vw, 1rem); margin: 0;">Especialistas em Piso Fulget</p>
+                                <img src="img/Logo%20N%20Reveste%20-%20preto.png" alt="Logo N Reveste"
+                                    class="contact-avatar" loading="lazy">
+                                <p style="color: #6b7280; font-size: clamp(0.875rem, 2.5vw, 1rem); margin: 0;">
+                                    Especialistas em Piso Fulget</p>
                             </div>
                             <div class="contact-info">
                                 <div class="contact-item">
@@ -1603,7 +1726,8 @@
                                     </div>
                                     <div>
                                         <p style="font-weight: 600; color: #111827; margin: 0;">(11) 97413-2034</p>
-                                        <p style="color: #6b7280; font-size: clamp(0.75rem, 2vw, 0.875rem); margin: 0;">WhatsApp e Telefone</p>
+                                        <p style="color: #6b7280; font-size: clamp(0.75rem, 2vw, 0.875rem); margin: 0;">
+                                            WhatsApp e Telefone</p>
                                     </div>
                                 </div>
                                 <div class="contact-item">
@@ -1612,7 +1736,8 @@
                                     </div>
                                     <div>
                                         <p style="font-weight: 600; color: #111827; margin: 0;">n_reveste@yahoo.com</p>
-                                        <p style="color: #6b7280; font-size: clamp(0.75rem, 2vw, 0.875rem); margin: 0;">Email principal</p>
+                                        <p style="color: #6b7280; font-size: clamp(0.75rem, 2vw, 0.875rem); margin: 0;">
+                                            Email principal</p>
                                     </div>
                                 </div>
                                 <div class="contact-item">
@@ -1621,21 +1746,27 @@
                                     </div>
                                     <div>
                                         <p style="font-weight: 600; color: #111827; margin: 0;">Mogi das Cruzes - SP</p>
-                                        <p style="color: #6b7280; font-size: clamp(0.75rem, 2vw, 0.875rem); margin: 0;">Atendemos toda Grande SP</p>
+                                        <p style="color: #6b7280; font-size: clamp(0.75rem, 2vw, 0.875rem); margin: 0;">
+                                            Atendemos toda Grande SP</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="social-links">
-                                <a href="https://www.instagram.com/n_reveste/" target="_blank" rel="noopener noreferrer" class="social-link instagram" aria-label="Instagram N Reveste">
+                                <a href="https://www.instagram.com/n_reveste/" target="_blank" rel="noopener noreferrer"
+                                    class="social-link instagram" aria-label="Instagram N Reveste">
                                     <i class="fab fa-instagram" aria-hidden="true"></i>
                                 </a>
-                                <a href="https://www.facebook.com/pisofulget.nreveste" target="_blank" rel="noopener noreferrer" class="social-link facebook" aria-label="Facebook Piso Fulget N Reveste">
+                                <a href="https://www.facebook.com/pisofulget.nreveste" target="_blank"
+                                    rel="noopener noreferrer" class="social-link facebook"
+                                    aria-label="Facebook Piso Fulget N Reveste">
                                     <i class="fab fa-facebook-f" aria-hidden="true"></i>
                                 </a>
-                                <a href="https://wa.me/5511974132034" target="_blank" rel="noopener noreferrer" class="social-link whatsapp" aria-label="WhatsApp N Reveste">
+                                <a href="https://wa.me/5511974132034" target="_blank" rel="noopener noreferrer"
+                                    class="social-link whatsapp" aria-label="WhatsApp N Reveste">
                                     <i class="fab fa-whatsapp" aria-hidden="true"></i>
                                 </a>
-                                <a href="mailto:n_reveste@yahoo.com" class="social-link email" aria-label="Email N Reveste">
+                                <a href="mailto:n_reveste@yahoo.com" class="social-link email"
+                                    aria-label="Email N Reveste">
                                     <i class="fas fa-envelope" aria-hidden="true"></i>
                                 </a>
                             </div>
@@ -1649,28 +1780,37 @@
             <div class="container">
                 <div class="footer-content">
                     <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
-                        <img src="img/Logo%20N%20Reveste%20-%20Branco.png" alt="Logo N Reveste" class="footer-logo" loading="lazy">
+                        <img src="img/Logo%20N%20Reveste%20-%20Branco.png" alt="Logo N Reveste" class="footer-logo"
+                            loading="lazy">
                     </div>
                     <p class="footer-text">
-                        Especialistas em Piso Fulget desde 2020. Transformando espaços com qualidade artesanal e materiais naturais.
+                        Especialistas em Piso Fulget desde 2020. Transformando espaços com qualidade artesanal e
+                        materiais naturais.
                     </p>
                     <div class="footer-social">
-                        <a href="https://www.instagram.com/n_reveste/" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Instagram N Reveste">
+                        <a href="https://www.instagram.com/n_reveste/" target="_blank" rel="noopener noreferrer"
+                            class="footer-social-link" aria-label="Instagram N Reveste">
                             <i class="fab fa-instagram" aria-hidden="true"></i>
                         </a>
-                        <a href="https://www.facebook.com/pisofulget.nreveste" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Facebook Piso Fulget N Reveste">
+                        <a href="https://www.facebook.com/pisofulget.nreveste" target="_blank" rel="noopener noreferrer"
+                            class="footer-social-link" aria-label="Facebook Piso Fulget N Reveste">
                             <i class="fab fa-facebook-f" aria-hidden="true"></i>
                         </a>
-                        <a href="https://wa.me/5511974132034" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="WhatsApp N Reveste">
+                        <a href="https://wa.me/5511974132034" target="_blank" rel="noopener noreferrer"
+                            class="footer-social-link" aria-label="WhatsApp N Reveste">
                             <i class="fab fa-whatsapp" aria-hidden="true"></i>
                         </a>
-                        <a href="mailto:contato@nreveste.com.br" class="footer-social-link" aria-label="Email N Reveste">
+                        <a href="mailto:contato@nreveste.com.br" class="footer-social-link"
+                            aria-label="Email N Reveste">
                             <i class="fas fa-envelope" aria-hidden="true"></i>
                         </a>
                     </div>
                     <div class="footer-divider">
                         <p class="footer-copyright">
-                            © 2025 <strong class="company-name">N Reveste</strong>. Todos os direitos reservados - Desenvolvido por <a href="https://wa.me/5511960573657?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20seus%20serviços." target="_blank" rel="noopener noreferrer">Lucas Cabral</a>
+                            © 2025 <strong class="company-name">N Reveste</strong>. Todos os direitos reservados -
+                            Desenvolvido por <a
+                                href="https://wa.me/5511960573657?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20seus%20serviços."
+                                target="_blank" rel="noopener noreferrer">Lucas Cabral</a>
                         </p>
                     </div>
                 </div>
@@ -1684,7 +1824,8 @@
             <i class="fas fa-arrow-up" aria-hidden="true"></i>
         </a>
         <a href="https://wa.me/5511974132034?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20para%20Piso%20Fulget."
-        class="floating-btn whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="Contato via WhatsApp">
+            class="floating-btn whatsapp-btn" target="_blank" rel="noopener noreferrer"
+            aria-label="Contato via WhatsApp">
             <i class="fab fa-whatsapp" aria-hidden="true"></i>
         </a>
     </div>
@@ -2079,4 +2220,5 @@
     </script>
 
 </body>
+
 </html>
