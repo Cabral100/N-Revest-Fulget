@@ -1132,16 +1132,15 @@
         /* Vídeos - Estilo atualizado */
         .videos-container {
             width: 100%;
+            height: 100%;
             overflow: hidden;
             display: flex;
             /* Para centralizar horizontalmente */
             justify-content: center;
-            flex-direction: column;
-            /* Em coluna para mobile */
-            gap: 1.5rem;
-            /* Espaçamento entre os vídeos */
-            padding: 0 clamp(1rem, 4vw, 2rem);
-            /* Padding da container */
+            flex-direction: column; /* Em coluna para mobile */
+            gap: 1.5rem; /* Espaçamento entre os vídeos */
+            padding: 0; /* Removido padding lateral */
+            position: relative;
             margin-top: clamp(3rem, 8vw, 6rem);
             /* Espaçamento com a seção acima */
             margin-bottom: clamp(3rem, 8vw, 6rem);
@@ -1150,11 +1149,9 @@
 
         .video-wrapper {
             width: 100%;
-            max-width: 800px;
-            /* Limite de largura para vídeos em desktop */
-            margin: 0 auto;
-            /* Centraliza vídeos no desktop */
-            border-radius: 16px;
+            max-width: 100%; /* Alterado para ocupar a largura total */
+            margin: 0 auto; /* Centraliza vídeos no desktop */
+            border-radius: 0; /* Removido o border-radius */
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             background-color: black;
@@ -1165,8 +1162,8 @@
 
         .video-wrapper video {
             width: 100%;
-            height: auto;
-            /* Altura automática para manter proporção */
+            height: 100%; /* Alterado para preencher o wrapper */
+            object-fit: cover; /* Garante que o vídeo cubra a área sem distorcer */
             display: block;
         }
 
@@ -1244,18 +1241,12 @@
                 flex-direction: row;
                 flex-wrap: wrap;
                 /* Permite quebrar linha se necessário */
-                gap: 2rem;
+                gap: 0; /* Removido o espaçamento */
                 justify-content: center;
-                padding: 0 clamp(2rem, 6vw, 4rem);
             }
 
             .video-wrapper {
-                flex: 1;
-                /* Permite que os vídeos cresçam e diminuam */
-                min-width: 300px;
-                /* Largura mínima para vídeos no desktop */
-                max-width: 48%;
-                /* Para ter dois vídeos por linha */
+                height: 70vh; /* Altura definida para o vídeo em desktop */
             }
         }
 
@@ -1275,11 +1266,6 @@
 
             .grid-3 {
                 grid-template-columns: repeat(4, 1fr);
-            }
-
-            .video-wrapper {
-                max-width: 580px;
-                /* Ajusta o tamanho dos vídeos para telas maiores */
             }
         }
 
@@ -1435,17 +1421,17 @@
                                 <h3 class="color-ocre">Missão</h3>
                                 <p>
                                     Confeccionar o melhor revestimento artesanal, com excelência desde a escolha
-                                    da matéria-prima até o acabamento final, garantindo um atendimento excepcional e
+                                    da matéria-prima até o acabamento final, garantindo um atendimento personalizado e
                                     suporte
-                                    pós-venda completo.
+                                    pós-venda.
                                 </p>
                             </div>
 
                             <div class="card card-values scale-in">
                                 <h3 class="color-terracota">Valores</h3>
                                 <p>
-                                    Respeito, honestidade, dedicação, capricho, transparência e responsabilidade
-                                    são os pilares que sustentam cada trabalho que realizamos, garantindo confiança e
+                                    Honestidade, capricho, transparência e comprometimento
+                                    são os pilares que sustentam cada trabalho que é realizados, garantindo confiança e
                                     satisfação em cada resultado.
                                 </p>
                             </div>
@@ -1518,13 +1504,7 @@
             <div class="videos-container">
                 <div class="video-wrapper">
                     <video muted loop playsinline preload="metadata" id="video1">
-                        <source src="img/WhatsApp Video 2025-08-20 at 15.34.57.mp4" type="video/mp4">
-                        Seu navegador não suporta vídeos HTML5.
-                    </video>
-                </div>
-                <div class="video-wrapper">
-                    <video muted loop playsinline preload="metadata" id="video2">
-                        <source src="img/WhatsApp Video 2025-08-20 at 16.12.55.mp4" type="video/mp4">
+                        <source src="img/Video_N_Revest.mp4" type="video/mp4">
                         Seu navegador não suporta vídeos HTML5.
                     </video>
                 </div>
@@ -1674,6 +1654,54 @@
                             <img src="img/b101.png" alt="Piso Fulget modelo B101 - Bege Luxo" loading="lazy">
                             <div class="catalog-item-overlay">
                                 <div class="catalog-item-description">B101</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="catalog-item scale-in">
+                        <div class="catalog-item-image">
+                            <img src="img/B155.png" alt="Piso Fulget modelo C551 - Cinza Sofisticado" loading="lazy">
+                            <div class="catalog-item-overlay">
+                                <div class="catalog-item-description">B155</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="catalog-item scale-in">
+                        <div class="catalog-item-image">
+                            <img src="img/B157.png" alt="Piso Fulget modelo C01 - Cinza Neutro" loading="lazy">
+                            <div class="catalog-item-overlay">
+                                <div class="catalog-item-description">B157</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="catalog-item scale-in">
+                        <div class="catalog-item-image">
+                            <img src="img/B166.png" alt="Piso Fulget modelo C21 - Cinza Contemporâneo" loading="lazy">
+                            <div class="catalog-item-overlay">
+                                <div class="catalog-item-description">B166</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="catalog-item scale-in">
+                        <div class="catalog-item-image">
+                            <img src="img/B302.png" alt="Piso Fulget cor especial C31" loading="lazy">
+                            <div class="catalog-item-overlay">
+                                <div class="catalog-item-description">B302</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="catalog-item scale-in">
+                        <div class="catalog-item-image">
+                            <img src="img/B501.png" alt="Piso Fulget modelo P100 - Pedra Natural" loading="lazy">
+                            <div class="catalog-item-overlay">
+                                <div class="catalog-item-description">B501</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="catalog-item scale-in">
+                        <div class="catalog-item-image">
+                            <img src="img/S150.png" alt="Piso Fulget modelo B101 - Bege Luxo" loading="lazy">
+                            <div class="catalog-item-overlay">
+                                <div class="catalog-item-description">S150</div>
                             </div>
                         </div>
                     </div>
@@ -1841,6 +1869,62 @@
                 }, 1000);
             }, 1500);
         });
+
+        // Lightbox Logic
+        const lightbox = document.getElementById('lightbox');
+        if (lightbox) {
+            const lightboxBody = document.getElementById('lightboxBody');
+            const lightboxClose = document.getElementById('lightboxClose');
+            const lightboxOverlay = document.getElementById('lightboxOverlay');
+            const triggers = document.querySelectorAll('.lightbox-trigger');
+
+            const openLightbox = (el) => {
+                const type = el.dataset.type;
+                const src = el.dataset.src;
+
+                if (!type || !src) return;
+
+                // Pausar vídeos da página
+                document.querySelectorAll('video').forEach(vid => vid.pause());
+
+                let content = '';
+                if (type === 'image') {
+                    content = `<img src="${src}" alt="Visualização ampliada">`;
+                } else if (type === 'video') {
+                    content = `<video controls autoplay loop src="${src}"></video>`;
+                }
+
+                lightboxBody.innerHTML = content;
+                lightbox.classList.add('show');
+                document.body.classList.add('lightbox-open');
+            };
+
+            const closeLightbox = () => {
+                lightbox.classList.remove('show');
+                document.body.classList.remove('lightbox-open');
+                // Limpa o conteúdo para parar vídeos
+                setTimeout(() => {
+                    lightboxBody.innerHTML = '';
+                }, 300);
+            };
+
+            triggers.forEach(trigger => {
+                trigger.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    openLightbox(trigger);
+                });
+            });
+
+            lightboxClose.addEventListener('click', closeLightbox);
+            lightboxOverlay.addEventListener('click', closeLightbox);
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && lightbox.classList.contains('show')) {
+                    closeLightbox();
+                }
+            });
+        }
+
 
         // Mobile Menu
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
