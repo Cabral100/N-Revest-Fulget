@@ -14,7 +14,7 @@
             --ocre: #D4A574;
             --terracota: #A0522D;
             --cinza-pedra: #B8B5A7;
-            --areia: #D4C5A9;
+            --areia: #D4c5A9;
             --camelo: #C8956D;
             --azul-petroleo: #2F4F4F;
             --musgo: #556B2F;
@@ -1128,7 +1128,6 @@
             transition-delay: 0.4s;
         }
 
-
         /* Vídeos - Estilo atualizado */
         .videos-container {
             width: 100%;
@@ -1167,6 +1166,84 @@
             display: block;
         }
 
+        /* LIGHTBOX STYLES */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-content img,
+        .lightbox-content video {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            transform: scale(1.1);
+        }
+
+        /* X fino como solicitado */
+        .lightbox-close::before,
+        .lightbox-close::after {
+            content: '';
+            position: absolute;
+            width: 2px; /* Linha bem fina */
+            height: 24px;
+            background-color: white;
+        }
+
+        .lightbox-close::before {
+            transform: rotate(45deg);
+        }
+
+        .lightbox-close::after {
+            transform: rotate(-45deg);
+        }
 
         /* Image Optimization */
         img {
@@ -1327,6 +1404,12 @@
         <div class="logo-container">
             <img src="img/Logo%20N%20Reveste%20-%20Branco.png" alt="N Reveste Logo" class="logo-nreveste">
         </div>
+    </div>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Fechar visualização"></button>
+        <div class="lightbox-content" id="lightboxContent"></div>
     </div>
 
     <header class="header" id="header">
@@ -1497,13 +1580,13 @@
                         Veja o <span>Piso Fulget</span> em ação
                     </h2>
                     <p class="section-subtitle">
-                        Assista aos vídeos e confira detalhes do acabamento e aplicação do Piso Fulget
+                        Assista ao vídeo e confira detalhes do acabamento e aplicação do Piso Fulget
                     </p>
                 </div>
             </div>
             <div class="videos-container">
                 <div class="video-wrapper">
-                    <video muted loop playsinline preload="metadata" id="video1">
+                    <video muted loop playsinline preload="metadata" id="video1" autoplay>
                         <source src="img/Video_N_Revest.mp4" type="video/mp4">
                         Seu navegador não suporta vídeos HTML5.
                     </video>
@@ -1522,28 +1605,28 @@
                     </p>
                 </div>
                 <div class="gallery-grid fade-in-up" role="img" aria-label="Galeria de projetos N Reveste">
-                    <div class="gallery-item">
+                    <div class="gallery-item lightbox-trigger" data-type="image" data-src="img/gale1.png">
                         <img src="img/gale1.png" alt="Projeto Piso Fulget em área de lazer com piscina" loading="lazy">
                     </div>
-                    <div class="gallery-item">
+                    <div class="gallery-item lightbox-trigger" data-type="image" data-src="img/gale2.png">
                         <img src="img/gale2.png" alt="Piso Fulget aplicado em entrada residencial" loading="lazy">
                     </div>
-                    <div class="gallery-item">
+                    <div class="gallery-item lightbox-trigger" data-type="image" data-src="img/gale3.png">
                         <img src="img/gale3.png" alt="Área gourmet com Piso Fulget e paisagismo" loading="lazy">
                     </div>
-                    <div class="gallery-item">
+                    <div class="gallery-item lightbox-trigger" data-type="image" data-src="img/gale4.png">
                         <img src="img/gale4.png" alt="Piso Fulget em jardim com plantas ornamentais" loading="lazy">
                     </div>
-                    <div class="gallery-item">
+                    <div class="gallery-item lightbox-trigger" data-type="image" data-src="img/gale5.png">
                         <img src="img/gale5.png" alt="Caminho em Piso Fulget entre jardins" loading="lazy">
                     </div>
-                    <div class="gallery-item">
+                    <div class="gallery-item lightbox-trigger" data-type="image" data-src="img/gale6.png">
                         <img src="img/gale6.png" alt="Área externa completa com Piso Fulget" loading="lazy">
                     </div>
-                    <div class="gallery-item">
+                    <div class="gallery-item lightbox-trigger" data-type="image" data-src="img/gale7.png">
                         <img src="img/gale7.png" alt="Piso Fulget em varanda com móveis externos" loading="lazy">
                     </div>
-                    <div class="gallery-item">
+                    <div class="gallery-item lightbox-trigger" data-type="image" data-src="img/gale8.png">
                         <img src="img/gale8.png" alt="Detalhe da textura do Piso Fulget" loading="lazy">
                     </div>
                 </div>
@@ -1561,7 +1644,7 @@
                     </p>
                 </div>
                 <div class="catalog-grid fade-in-up">
-                    <div class="catalog-item scale-in">
+                    <div class="catalog-item scale-in lightbox-trigger" data-type="image" data-src="img/b100.png">
                         <div class="catalog-item-image">
                             <img src="img/b100.png" alt="Piso Fulget modelo B100 - Bege Natural" loading="lazy">
                             <div class="catalog-item-overlay">
@@ -1569,7 +1652,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="catalog-item scale-in">
+                    <div class="catalog-item scale-in lightbox-trigger" data-type="image" data-src="img/c102.png">
                         <div class="catalog-item-image">
                             <img src="img/c102.png" alt="Piso Fulget modelo C102 - Cinza Clássico" loading="lazy">
                             <div class="catalog-item-overlay">
@@ -1577,7 +1660,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="catalog-item scale-in">
+                    <div class="catalog-item scale-in lightbox-trigger" data-type="image" data-src="img/b22.png">
                         <div class="catalog-item-image">
                             <img src="img/b22.png" alt="Piso Fulget modelo B22 - Bege Premium" loading="lazy">
                             <div class="catalog-item-overlay">
@@ -1585,7 +1668,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="catalog-item scale-in">
+                    <div class="catalog-item scale-in lightbox-trigger" data-type="image" data-src="img/c31.png">
                         <div class="catalog-item-image">
                             <img src="img/c31.png" alt="Piso Fulget modelo C31 - Cinza Escuro" loading="lazy">
                             <div class="catalog-item-overlay">
@@ -1593,7 +1676,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="catalog-item scale-in">
+                    <div class="catalog-item scale-in lightbox-trigger" data-type="image" data-src="img/b21.png">
                         <div class="catalog-item-image">
                             <img src="img/b21.png" alt="Piso Fulget modelo B21 - Bege Elegante" loading="lazy">
                             <div class="catalog-item-overlay">
@@ -1601,7 +1684,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="catalog-item scale-in">
+                    <div class="catalog-item scale-in lightbox-trigger" data-type="image" data-src="img/c55.png">
                         <div class="catalog-item-image">
                             <img src="img/c55.png" alt="Piso Fulget modelo C55 - Cinza Moderno" loading="lazy">
                             <div class="catalog-item-overlay">
@@ -1609,7 +1692,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="catalog-item scale-in">
+                    <div class="catalog-item scale-in lightbox-trigger" data-type="image" data-src="img/c551.png">
                         <div class="catalog-item-image">
                             <img src="img/c551.png" alt="Piso Fulget modelo C551 - Cinza Sofisticado" loading="lazy">
                             <div class="catalog-item-overlay">
@@ -1617,7 +1700,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="catalog-item scale-in">
+                    <div class="catalog-item scale-in lightbox-trigger" data-type="image" data-src="img/c01.png">
                         <div class="catalog-item-image">
                             <img src="img/c01.png" alt="Piso Fulget modelo C01 - Cinza Neutro" loading="lazy">
                             <div class="catalog-item-overlay">
@@ -1625,7 +1708,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="catalog-item scale-in">
+                    <div class="catalog-item scale-in lightbox-trigger" data-type="image" data-src="img/c21.png">
                         <div class="catalog-item-image">
                             <img src="img/c21.png" alt="Piso Fulget modelo C21 - Cinza Contemporâneo" loading="lazy">
                             <div class="catalog-item-overlay">
@@ -1633,7 +1716,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="catalog-item scale-in">
+                    <div class="catalog-item scale-in lightbox-trigger" data-type="image" data-src="img/cor_c_31.png">
                         <div class="catalog-item-image">
                             <img src="img/cor_c_31.png" alt="Piso Fulget cor especial C31" loading="lazy">
                             <div class="catalog-item-overlay">
@@ -1641,7 +1724,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="catalog-item scale-in">
+                    <div class="catalog-item scale-in lightbox-trigger" data-type="image" data-src="img/p100.png">
                         <div class="catalog-item-image">
                             <img src="img/p100.png" alt="Piso Fulget modelo P100 - Pedra Natural" loading="lazy">
                             <div class="catalog-item-overlay">
@@ -1649,7 +1732,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="catalog-item scale-in">
+                    <div class="catalog-item scale-in lightbox-trigger" data-type="image" data-src="img/b101.png">
                         <div class="catalog-item-image">
                             <img src="img/b101.png" alt="Piso Fulget modelo B101 - Bege Luxo" loading="lazy">
                             <div class="catalog-item-overlay">
@@ -1657,7 +1740,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="catalog-item scale-in">
+                    <div class="catalog-item scale-in lightbox-trigger" data-type="image" data-src="img/B155.png">
                         <div class="catalog-item-image">
                             <img src="img/B155.png" alt="Piso Fulget modelo C551 - Cinza Sofisticado" loading="lazy">
                             <div class="catalog-item-overlay">
@@ -1665,7 +1748,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="catalog-item scale-in">
+                    <div class="catalog-item scale-in lightbox-trigger" data-type="image" data-src="img/B157.png">
                         <div class="catalog-item-image">
                             <img src="img/B157.png" alt="Piso Fulget modelo C01 - Cinza Neutro" loading="lazy">
                             <div class="catalog-item-overlay">
@@ -1673,7 +1756,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="catalog-item scale-in">
+                    <div class="catalog-item scale-in lightbox-trigger" data-type="image" data-src="img/B166.png">
                         <div class="catalog-item-image">
                             <img src="img/B166.png" alt="Piso Fulget modelo C21 - Cinza Contemporâneo" loading="lazy">
                             <div class="catalog-item-overlay">
@@ -1681,7 +1764,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="catalog-item scale-in">
+                    <div class="catalog-item scale-in lightbox-trigger" data-type="image" data-src="img/B302.png">
                         <div class="catalog-item-image">
                             <img src="img/B302.png" alt="Piso Fulget cor especial C31" loading="lazy">
                             <div class="catalog-item-overlay">
@@ -1689,7 +1772,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="catalog-item scale-in">
+                    <div class="catalog-item scale-in lightbox-trigger" data-type="image" data-src="img/B501.png">
                         <div class="catalog-item-image">
                             <img src="img/B501.png" alt="Piso Fulget modelo P100 - Pedra Natural" loading="lazy">
                             <div class="catalog-item-overlay">
@@ -1697,7 +1780,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="catalog-item scale-in">
+                    <div class="catalog-item scale-in lightbox-trigger" data-type="image" data-src="img/S150.png">
                         <div class="catalog-item-image">
                             <img src="img/S150.png" alt="Piso Fulget modelo B101 - Bege Luxo" loading="lazy">
                             <div class="catalog-item-overlay">
@@ -1872,59 +1955,58 @@
 
         // Lightbox Logic
         const lightbox = document.getElementById('lightbox');
-        if (lightbox) {
-            const lightboxBody = document.getElementById('lightboxBody');
-            const lightboxClose = document.getElementById('lightboxClose');
-            const lightboxOverlay = document.getElementById('lightboxOverlay');
-            const triggers = document.querySelectorAll('.lightbox-trigger');
+        const lightboxContent = document.getElementById('lightboxContent');
+        const lightboxClose = document.getElementById('lightboxClose');
 
-            const openLightbox = (el) => {
-                const type = el.dataset.type;
-                const src = el.dataset.src;
-
-                if (!type || !src) return;
-
-                // Pausar vídeos da página
-                document.querySelectorAll('video').forEach(vid => vid.pause());
-
-                let content = '';
-                if (type === 'image') {
-                    content = `<img src="${src}" alt="Visualização ampliada">`;
-                } else if (type === 'video') {
-                    content = `<video controls autoplay loop src="${src}"></video>`;
-                }
-
-                lightboxBody.innerHTML = content;
-                lightbox.classList.add('show');
-                document.body.classList.add('lightbox-open');
-            };
-
-            const closeLightbox = () => {
-                lightbox.classList.remove('show');
-                document.body.classList.remove('lightbox-open');
-                // Limpa o conteúdo para parar vídeos
-                setTimeout(() => {
-                    lightboxBody.innerHTML = '';
-                }, 300);
-            };
-
-            triggers.forEach(trigger => {
-                trigger.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    openLightbox(trigger);
-                });
-            });
-
-            lightboxClose.addEventListener('click', closeLightbox);
-            lightboxOverlay.addEventListener('click', closeLightbox);
-
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && lightbox.classList.contains('show')) {
-                    closeLightbox();
-                }
-            });
+        function openLightbox(src, type) {
+            let content = '';
+            
+            if (type === 'image') {
+                content = `<img src="${src}" alt="Visualização ampliada">`;
+            } else if (type === 'video') {
+                content = `<video controls autoplay loop muted playsinline src="${src}"></video>`;
+            }
+            
+            lightboxContent.innerHTML = content;
+            lightbox.classList.add('show');
+            document.body.style.overflow = 'hidden';
         }
 
+        function closeLightbox() {
+            lightbox.classList.remove('show');
+            document.body.style.overflow = '';
+            // Limpa o conteúdo para parar vídeos
+            setTimeout(() => {
+                lightboxContent.innerHTML = '';
+            }, 300);
+        }
+
+        // Adiciona evento de clique para todos os elementos com a classe lightbox-trigger
+        document.querySelectorAll('.lightbox-trigger').forEach(trigger => {
+            trigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                const src = trigger.getAttribute('data-src');
+                const type = trigger.getAttribute('data-type');
+                openLightbox(src, type);
+            });
+        });
+
+        // Fecha lightbox ao clicar no botão X
+        lightboxClose.addEventListener('click', closeLightbox);
+
+        // Fecha lightbox ao clicar fora do conteúdo
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Fecha lightbox com a tecla ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('show')) {
+                closeLightbox();
+            }
+        });
 
         // Mobile Menu
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -2078,8 +2160,8 @@
                         entry.target.classList.contains('animate-reveal')) {
                         entry.target.classList.add('visible');
                     }
-
-                    // Vídeos
+                    
+                    // Vídeos - Inicia automaticamente quando visível
                     if (entry.target.tagName === 'VIDEO') {
                         entry.target.play().catch(console.log);
                     }
