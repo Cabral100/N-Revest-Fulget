@@ -2081,7 +2081,6 @@
 
                     // Vídeos
                     if (entry.target.tagName === 'VIDEO') {
-                        entry.target.currentTime = 0; // Garante que o vídeo reinicie
                         entry.target.play().catch(console.log);
                     }
                 } else {
